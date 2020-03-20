@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>裁切</title>
+    <meta name="description" content="website description...">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 主要css -->
+    <link rel="stylesheet" href="resources/css/normalize.min.css">
+    <link rel="stylesheet" href="resources/css/main.css">
+    <script>
+        window.console = window.console || function(t) {};
+    </script>
+    <script>
+        if (document.location.search.match(/type=embed/gi)) {
+            window.parent.postMessage("resize", "*");
+        }
+    </script>        
+</head>
+
+<body translate="no">    
+    <div id="img-crop">
+        <div class="topbar">
+          <div class="toptext">截圖</div>
+          <div id="close" onclick="Close()"></div>
+        </div>   
+        <div id="upload">            
+            <div class="block">
+                <div class="stage">
+                    <label id="filedrag">
+                        <input type="file" id="fileselect" name="fileselect" accept="image/*" />
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div id="crop">                
+            <div class="block">
+              <button class="btn" id="next" onclick="cropResult();">下一步</button>
+              <div class="stage">        
+                <div id="croppie"></div>
+              </div>      
+            </div>
+        </div>
+    	<div id="step3">            
+    		<div id="result">				
+    			<div class="block">
+    				<div class="stage">
+    					<img src="" id="drag-source" draggable="true"/>
+    				</div>                    
+    			</div>
+    		</div>            
+    		<div id="final">
+                <div id="fusion">
+        			<div id="target-container"></div>
+                </div>
+    			<div class="scrollBar">
+    				<div class="scrollBlock">
+                        <div class="scrollTitle">
+                            比例:
+                        </div>
+                        <div class="scrolltextleft">小</div>
+                        <input id="size" class="slider" type="range" min="5" max="50" value="40">
+                        <div class="scrolltextright">大</div>
+                    </div>
+    				<div class="scrollBlock">
+                        <div class="scrollTitle">
+                            左右:
+                        </div>
+                        <div class="scrolltextleft">左</div>
+                        <input id="marleft" class="slider" type="range" min="-82" max="82" value="0">
+                        <div class="scrolltextright">右</div>
+                    </div>
+    				<div class="scrollBlock">
+                        <div class="scrollTitle">
+                            上下:
+                        </div>
+                        <div class="scrolltextleft">上</div>
+                        <input id="martop" class="slider" type="range" min="-10" max="90" value="0">
+                        <div class="scrolltextright">下</div>
+                    </div>
+    				<div class="scrollBlock">
+                        <button class="scrollTitle" id="rotate"><img src="./img/rotate.png" class="rotate-img">旋轉</button>
+                    </div>
+                    <div class="scrollBlock" id="scrollBlockdownload">
+                        <button id="download" onclick="first();">下載</button>
+                     </div>                
+    			</div>
+    			<!--顯示截圖區塊-->
+    			<div id="screenRes" class="container">
+                    <a><img id="screen" class="screen"></a>
+    			</div>                
+    		</div>            
+    	</div>
+    </div>
+    <script src="resources/js/stopExecutionOnTimeout.js"></script>
+    <script src='resources/js/jquery.min.js'></script>
+    <script src='resources/js/croppie.min.js'></script>
+    <script src="resources/js/pen.js"></script>
+    <script src="resources/js/css_reload.js"></script>
+	<script src="resources/js/html2canvas.min.js"></script></head>
+	<script src="resources/js/screenshot.js"></script>
+    <script src="resources/js/scroll.js"></script>
+</body>
+</html>

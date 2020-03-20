@@ -1,0 +1,412 @@
+    *, *:before, *::after {
+  box-sizing: border-box;
+  text-align: center;
+}
+
+
+/*偽視窗主頁面*/
+#img-crop {
+  width: 720px;
+  height: 616px;
+  text-align: center;
+  font-family: Roboto, PingFangTC-Regular, Microsoft JhengHei;  
+}
+
+/*上端控制*/
+.topbar{
+  width: 720px;
+  height: 54px;
+  background: #48ADFC;
+  border-radius: 5px 5px 0 0;
+}
+
+.toptext{
+  width: 41.1px;
+  height: 28px;
+  position: absolute;
+  top: 14px;
+  left: 57px;  
+  font-size: 20px;
+  color: #FFFFFF;
+  text-align: center;
+  z-index: 1;
+}
+
+.topbar #close{
+  background-image: url('../../img/關閉視窗@3x.png');
+  background-size: 100%; 
+  background-repeat:no-repeat;
+  width: 20px;
+  height: 20px;  
+  z-index: 1;
+  float:right;
+  margin-top: 17px;
+  margin-right: 20px;
+}
+
+/*共用*/
+#img-crop .block {
+  width: 720px;
+  height: 617px;  
+  background: #F9F9F9;
+  border-radius: 5px 5px 5px 5px;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+#img-crop .block .stage {
+  width: 345px;
+  height: 426px;
+  position:absolute;
+  top: 30px;
+  left: 50%;
+  margin-left: -172.5px;
+  padding: 15px 12px;
+  background: #FDFCF2;
+  box-shadow: 10px 10px 100px 0 #DADADA;
+}
+
+/*上傳部分*/
+#img-crop #upload label#filedrag {
+  display: block;
+  width: 100%;
+  height: 100%; 
+  background-size: 25% auto;
+  transition: background 0.3s ease;
+  cursor: pointer;
+}
+
+#img-crop #upload input[type="file"] {
+  display: none;
+}
+
+/*縮放部分*/
+#img-crop #crop {
+  display: none;  
+}
+
+#img-crop #crop .btn#next {  
+  font-size: 16px;
+  color: #FFFFFF;
+  width: 112px;
+  height: 34px;  
+  background: #48ADFC;
+  border: 1px solid #48ADFC;
+  position: absolute;
+  top: 573px;
+  right: 20px;
+  border-radius: 5px 5px 5px 5px;
+}
+#img-crop #crop .btn#next:hover{  
+  background: #199AFC;
+
+}
+#img-crop #crop .cr-boundary {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+#img-crop #crop .cr-boundary .cr-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-transform-origin: 0 0;
+          transform-origin: 0 0;
+  z-index: -1;
+  max-width: none;
+}
+#img-crop #crop .cr-boundary .cr-viewport {
+  margin: auto;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  box-shadow: 0 0 0 900px #d9d9d9;
+  z-index: 0;
+}
+#img-crop #crop .cr-boundary .cr-overlay {
+  position: absolute;
+  z-index: 2;
+  cursor: move;
+}
+#img-crop #crop .cr-slider-wrap {
+  width: 346px;
+  height: 40px;
+  position: absolute;
+  top: 400px;
+  left: -0.5px;
+  -webkit-transform: translateY(100%);
+          transform: translateY(100%);
+  z-index: 99;
+  display: flex;  
+}
+
+#img-crop #crop .cr-slider-wrap .cr-slider,.slider {
+  width: 249px;
+  height: 40px;
+  background: #FEFEFE;
+  border: 1px solid #F7F7F7;
+  -webkit-appearance: none;
+  text-align:left;
+  padding-left: 5px;
+  padding-right: 5px;  
+}
+#img-crop #crop .cr-slider-wrap .cr-slider::-webkit-slider-runnable-track,.slider::-webkit-slider-runnable-track {/*線條*/
+  width: 100%;
+  height: 4px;
+  background-color: #c8cccf;
+  border: 0;
+  border-radius: 1em;
+}
+#img-crop #crop .cr-slider-wrap .cr-slider::-webkit-slider-thumb,.slider::-webkit-slider-thumb {/*圓點*/
+  -webkit-appearance: none;
+  width: 15px;
+  height: 15px;
+  margin-top: -6.5px;
+  border-radius:999em;
+  background-color: #48ADFC;  
+  border: none;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+  transition: -webkit-transform 0.3s;
+  transition: transform 0.3s;
+  transition: transform 0.3s, -webkit-transform 0.3s;
+}
+#img-crop #crop .cr-slider-wrap .cr-slider:hover::-webkit-slider-thumb {
+  -webkit-transform: scale(1.25);
+          transform: scale(1.25);
+}
+#img-crop #crop .cr-slider-wrap .cr-slider:focus {
+  outline: none;
+}
+#img-crop #crop .cr-slider-wrap .cr-slider::-moz-range-track {
+  width: 100%;
+  height: 4px;
+  background-color: #c8cccf;
+  border: 0;
+  border-radius: 1em;
+}
+#img-crop #crop .cr-slider-wrap .cr-slider::-moz-range-thumb {
+  height: 16px;
+  width: 16px;
+  margin-top: -6px;
+  background-color: #8193a2;
+  border-radius: 50%;
+  border: none;
+  transform: scale(1);
+  transition: -webkit-transform 0.3s;
+  transition: transform 0.3s;
+  transition: transform 0.3s, -webkit-transform 0.3s;
+}
+#img-crop #crop .cr-slider-wrap .cr-slider:hover::-moz-range-thumb {
+  transform: scale(1.25);
+}
+#img-crop #crop .cr-slider-wrap .cr-slider:-moz-focusring {
+  outline: 1px solid white;
+  outline-offset: -1px;
+}
+#img-crop #crop .cr-slider-wrap .cr-slider:-moz-focusring::-moz-range-thumb {
+  background-color: #425389;
+}
+#img-crop #crop .cr-slider-wrap .cr-slider::-ms-track {
+  width: 300px;
+  height: 4px;
+  background: transparent;
+  border-color: transparent;
+  border-width: 6px 0;
+  color: transparent;
+}
+#img-crop #crop .cr-slider-wrap .cr-slider::-ms-fill-lower, #img-crop #crop .cr-slider-wrap .cr-slider::-ms-fill-upper {
+  background: #c8cccf;  
+}
+#img-crop #crop .cr-slider-wrap .cr-slider::-ms-thumb {
+  border: none;
+  height: 16px;
+  width: 16px;  
+  background-color: #8193a2;
+}
+#img-crop #crop .cr-slider-wrap #cr-rotate {
+  width: 56px;
+  height: 29px;
+  font-size: 12px;
+  color: #48ADFC;
+  letter-spacing: 0.6px;
+  background: #F2F9FD;
+  border: 1px solid #48ADFC;
+  border-radius: 5px 5px 5px 5px;
+  position: relative;
+  left: 41px;
+  margin-top: 5.5px;
+  padding: 6px 5px;
+}
+#img-crop #crop .cr-slider-wrap #cr-rotate:hover{
+  background: #E2F1FC;
+  border: 1px solid #259EFB;
+}
+.rotate-img {
+  width: 10px;
+  height: 10px;
+  background-color: transparent;
+  margin-right: 5px;
+}
+
+
+/*截圖縮放部分*/
+/*偽視窗主頁面*/
+#step3 {
+  display: none;
+  width: 1020px;
+  height: 863px;
+  border-radius: 5px 5px 5px 5px;
+  text-align: center;
+  font-family: PingFangTC-Regular, "微軟正黑體";   
+}
+
+#img-crop #comparison {
+  display: none;
+}
+
+#img-crop #result {
+  display: none;
+}
+
+#img-crop #result img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/*移動*/
+#final,.scrollBar,#screenRes{
+  display: none;
+}
+.scrollBar{
+  width: 831px;
+  height: 210px;  
+  position: absolute;
+  top: 629px;
+  left: 102px;
+}
+.scrollBlock{
+  display: flex;
+  height: 40px;  
+  margin-top: 10px; 
+  margin-bottom: 20px; 
+}
+.scrollTitle{
+  width: 39px;
+  height: 40px;
+  font-size: 16px;
+  color: #656B74;
+  letter-spacing: 0.8px;
+  margin-right: 24px;
+  display: flex;
+  align-items: center;  
+}
+.scrollBar .scrollBlock .slider{
+  -webkit-appearance: none;
+  width: 714px;
+  height: 40px;
+  background: #FEFEFE;  
+  border-left: 0;
+  border-right: 0;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+.scrolltextleft{
+  width: 27px;
+  height: 40px;
+  background: #FEFEFE;
+  border: 1px solid #F7F7F7;
+  border-right: 0;  
+  font-size: 16px;
+  color: #656B74;
+  letter-spacing: 0.8px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.scrolltextright{
+  width: 27px;
+  height: 40px;
+  background: #FEFEFE;
+  border: 1px solid #F7F7F7;
+  border-left: 0;
+  text-align: left;
+  font-size: 16px;
+  color: #656B74;
+  letter-spacing: 0.8px;
+  display: flex;
+  align-items: center;
+}
+
+#result .block{
+  margin: auto;
+  width: 347px;
+}
+#step3 #final{
+  text-align: center;  
+}
+#fusion{
+  width: 816px;
+  height: 555px;
+  background-color: #FDFCF2;
+  box-shadow: 10px 10px 100px 0 #DADADA;  
+  position: absolute;
+  top: 74px;
+  left: 102px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+#target-container {
+  width: 782px;
+  height: 521px;  
+  background-size: 100%; 
+  background-repeat:no-repeat;
+  flex: 1;   
+  position: absolute;  
+}
+#drag-source{
+  position: relative;
+}
+#rotate{
+  width: 56px;
+  height: 29px;
+  font-size: 12px;
+  color: #48ADFC;
+  letter-spacing: 0.6px;
+  background: #F2F9FD;
+  border: 1px solid #48ADFC;
+  border-radius: 5px 5px 5px 5px;
+  position: relative;
+  left: 60px;  
+}
+
+#rotate:hover{
+  background: #E2F1FC;
+  border: 1px solid #259EFB;
+}
+#screen{
+  margin-top: 37px;
+}
+#scrollBlockdownload{
+  width: 918px;
+  height: 49px;
+  margin: 0 0;
+  margin-top: -11px;
+}
+#download{
+  font-size: 16px;
+  color: #FFFFFF;
+  width: 112px;
+  height: 34px;  
+  background: #48ADFC;
+  border: 1px solid #48ADFC;  
+  border-radius: 5px 5px 5px 5px;
+  position: absolute;
+  left: 786px;
+}
+#download:hover{
+  background: #199AFC;
+}

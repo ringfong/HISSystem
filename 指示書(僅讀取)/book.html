@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>指示書(僅讀取)</title>
+<!-- CSS -->
+  <link rel="stylesheet" href="resources/css/book.css">
+<!-- JQ-UI CSS -->
+  <link rel="stylesheet" href="resources/core/jquery-ui/jquery-ui.css">
+  <link rel="stylesheet" href="resources/core/jquery-ui/jquery-ui.min.css">
+<!-- jQuery -->
+  <script src="resources/core/jquery/jquery-3.4.1.js"></script>
+  <script src="resources/core/jquery-ui/jquery-ui.min.js"></script>
+  <script src="resources/core/jquery-ui/jqui-tw.js"></script>
+  <!-- 判別 -->
+  <script src="resources/core/jquery/jquery.validate.min.js"></script>
+  <script src="resources/core/jquery/messages_zh.js"></script>
+ 
+
+</head>
+<body>
+<div id="communication_sheet">&emsp;溝通單</div>
+<div class="background">	
+	<div id="BookBackground">		
+		<div id="BookTitle">指示書</div>
+		<table id="form1">
+			<tbody>
+				<tr>
+					<!-- 診所 Clinic -->
+					<td class="form1">
+						<label class="form1text" id="form1_text1" for="form1_input1">診所</label>
+						<input name="Clinic" class="form1_input form1_text" id="form1_input1" type="text" readonly="readonly"/>
+					</td>
+					<!-- 醫師 Doctor -->
+					<td class="form1">
+						<label id="form1_text2" class="form1text" for="form1_input2">醫師</label>
+						<input name="Doctor" class="form1_input form1_text"  id="form1_input2"type="text" readonly="readonly"/>
+					</td>
+					<!-- 技工所 Laboratory -->
+					<td class="form1">
+						<label id="form1_text3" class="form1text" for="form1_input3">技工所</label>
+						<select name="Laboratory" class="form1_input form1_text drop-down-menu" id="form1_input3">
+							<option value="Taipei">台北</option>
+							<option value="Taoyuan">桃園</option>
+							<option value="Hsinchu">新竹</option>
+							<option value="Miaoli">苗栗</option>　
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<!-- 病患 Patient -->
+					<td class="form1">
+						<label id="form1_text4" class="form1text" for="form1_input4">病患</label>
+						<input name="Patient" class="form1_input form1_text" id="form1_input4" readonly="readonly"></input>
+					</td>
+					<!-- 年齡 Age -->
+					<td class="form1" id="form1_td5">
+						<label id="form1_text5" class="form1text" for="form1_input5">年齡</label>
+						<input name="Age" class="form1_input" id="form1_input5" readonly="readonly"></input>
+						<label class="form1text" id="form1text_age" for="form1_input5">歲</label>
+					</td>
+					<!-- 性別 Gender -->
+					<td class="form1">
+						<div id="form1_text6" class="form1text">性別</div>
+							<input name="Gender" type="radio" class="form1_input" id="form1_input6-1" value="Male" checked> 男
+							<input name="Gender" type="radio" id="form1_input6-2" class="form1_input" value="Female"> 女
+					</td>
+				</tr>
+				<tr>
+				<!-- 收件時間 ReceiveTime -->
+					<td class="form1">
+						<label id="form1_text7" class="form1text" for="form1_input7_1">收件時間</label>
+						<input name="ReceiveTime" id="form1_input7_1" type="text" class="form1_input form1_date" value ="YYYY-MM-DD" onfocus="clear_input_text(this)" onblur="reset_input_text(this)">
+						<select name="AMPM1" class="form1_input AMPM drop-down-menu" id="form1_input7_2">
+							<option value="AM">AM</option>
+							<option value="PM">PM</option>
+						</select>
+						<input name="Time1" class="form1_input form1_inputTime" id="form1_input7_3" value ="00:00" onfocus="clear_input_text(this)" onblur="reset_input_text(this)"></input>
+					</td>
+					<!-- 試戴時間 TryOnTime -->
+					<td class="form1">
+						<label id="form1_text8" class="form1text" for="form1_input8_1">試戴時間</label>
+						<input name="TryOnTime" id="form1_input8_1" type="text" class="form1_input form1_date" value="YYYY-MM-DD" onfocus="clear_input_text(this)" onblur="reset_input_text(this)">
+						<select name="AMPM2" class="form1_input AMPM drop-down-menu" id="form1_input8_2">
+							<option value="AM">AM</option>
+							<option value="PM">PM</option>
+						</select>
+						<input name="Time2" class="form1_input form1_inputTime" id="form1_input8_3" value ="00:00" onfocus="clear_input_text(this)" onblur="reset_input_text(this)"></input>
+					</td>
+					<!-- 完成時間 CompleteTime -->
+					<td class="form1">
+						<label id="form1_text9" class="form1text" for="form1_input9_1">完成時間</label>
+						<input name="CompleteTime" id="form1_input9_1" type="text" class="form1_input form1_date" value="YYYY-MM-DD" onfocus="clear_input_text(this)" onblur="reset_input_text(this)">
+						<select name="AMPM3" class="form1_input AMPM drop-down-menu" id="form1_input9_2">
+							<option value="AM">AM</option>
+							<option value="PM">PM</option>
+						</select>
+						<input name="Time3" class="form1_input form1_inputTime" id="form1_input9_3" value ="00:00" onfocus="clear_input_text(this)" onblur="reset_input_text(this)"></input>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<!-- 拖曳式表單選項區 -->
+		<div id="form2">
+			<div id="form2_area1">
+				<div class="area1_button" id="choose_button_1" value = "1">金屬瓷牙</div>
+				<div class="area1_button" id="choose_button_2" value = "2">金屬冠/嵌體</div>
+				<div class="area1_button" id="choose_button_3" value = "3">全瓷冠</div>
+				<div class="area1_button" id="choose_button_4" value = "4">牙橋設計</div>
+				<div class="area1_button" id="choose_button_5" value = "5">附件</div>
+				<div class="area1_button" id="choose_button_6" value = "6">植牙</div>
+				<div class="area1_button" id="choose_button_7" value = "7">其他</div>					
+			</div>				
+			<div id="triangle_display">
+				<img src="images/Triangle for item@3x.png" alt="" class="triangle" id="triangle_1">
+				<img src="images/Triangle for item@3x.png" alt="" class="triangle" id="triangle_2">
+				<img src="images/Triangle for item@3x.png" alt="" class="triangle" id="triangle_3">
+				<img src="images/Triangle for item@3x.png" alt="" class="triangle" id="triangle_4">
+				<img src="images/Triangle for item@3x.png" alt="" class="triangle" id="triangle_5">
+				<img src="images/Triangle for item@3x.png" alt="" class="triangle" id="triangle_6">
+				<img src="images/Triangle for item@3x.png" alt="" class="triangle" id="triangle_7">
+			</div>
+			<!-- 拖曳式表單拖拉區 -->
+			<div class="form2_area2" id="form2_kind1">
+				<div class="area2_dropbutton" id = "db1_1">&emsp;貴重金屬&nbsp;87%Au(J"O")</div>
+				<div class="area2_dropbutton" id = "db1_2">&emsp;貴重金屬&nbsp;74%Au</div>
+				<div class="area2_dropbutton" id = "db1_3">&emsp;貴重金屬&nbsp;50%Au(Cameo)</div>
+				<div class="area2_dropbutton" id = "db1_4">&emsp;貴重金屬&nbsp;15%Au</div>
+				<div class="area2_dropbutton" id = "db1_5">&emsp;半貴金屬&nbsp;Ag-Pd(Jelstar)</div>
+				<div class="area2_dropbutton" id = "db1_6">&emsp;數位生物合金&nbsp;AG&nbsp;Sintron</div>
+				<div class="area2_dropbutton" id = "db1_7">&emsp;含鈦合金&nbsp;Titanium</div>
+				<div class="area2_dropbutton" id = "db1_8">&emsp;基本金屬</div>
+			</div>
+			<div class="form2_area2"  id="form2_kind2">
+				<div class="area2_dropbutton" id = "db2_1">&emsp;金合金&nbsp;75%Au</div>
+				<div class="area2_dropbutton" id = "db2_2">&emsp;金合金&nbsp;50%Au</div>
+				<div class="area2_dropbutton" id = "db2_3">&emsp;金合金&nbsp;40%Au</div>
+				<div class="area2_dropbutton" id = "db2_4">&emsp;金合金&nbsp;20%Au</div>
+				<div class="area2_dropbutton" id = "db2_5">&emsp;銀鈀合金&nbsp;Pd-Ag</div>
+				<div class="area2_dropbutton" id = "db2_6">&emsp;數位生物合金&nbsp;AG&nbsp;Sintron</div>
+				<div class="area2_dropbutton" id = "db2_7">&emsp;含鈦合金&nbsp;Titanium</div>
+				<div class="area2_dropbutton" id = "db2_8">&emsp;基本金屬</div>
+			</div>
+			<div class="form2_area2"  id="form2_kind3">
+				<div class="area2_dropbutton" id = "db3_1">&emsp;e.max</div>
+				<div class="area2_dropbutton" id = "db3_2">&emsp;二氧化鋯</div>
+				<div class="area2_dropbutton" id = "db3_3">&emsp;Full&nbsp;crown</div>
+				<div class="area2_dropbutton" id = "db3_4">&emsp;Inlay</div>
+				<div class="area2_dropbutton" id = "db3_5">&emsp;Onlay</div>
+				<div class="area2_dropbutton" id = "db3_6">&emsp;Veneer</div>
+				<div class="area2_dropbutton" id = "db3_7">&emsp;Overlay</div>
+				<div class="area2_dropbutton" id = "db3_8">&emsp;燒瓷全瓷冠</div>
+				<div class="area2_dropbutton" id = "db3_9">&emsp;加牙肉色瓷:顏色<input type="text" id="db3_9_text" class="area2_dropbutton_inputtext" name=""></div>
+			</div>
+			<div class="form2_area2"  id="form2_kind4">
+				<div class="area2_dropbutton" id = "db4_1">&emsp;偏側型</div>
+				<div class="area2_dropbutton" id = "db4_2">&emsp;衛生型</div>
+				<div class="area2_dropbutton" id = "db4_3">&emsp;子彈型</div>
+				<div class="area2_dropbutton" id = "db4_4">&emsp;馬鞍型</div>
+			</div>
+			<div class="form2_area2"  id="form2_kind5">
+				<div class="area2_dropbutton" id = "db5_1">&emsp;Bite</div>
+				<div class="area2_dropbutton" id = "db5_2">&emsp;Tray</div>
+				<div class="area2_dropbutton" id = "db5_3">&emsp;舊牙</div>
+				<div class="area2_dropbutton" id = "db5_4">&emsp;參考模</div>
+				<div class="area2_dropbutton" id = "db5_5">&emsp;客製化支台齒<input id="db5_5_text" type="text" class="area2_dropbutton_inputtext" name="">支</div>
+				<div class="area2_dropbutton" id = "db5_6">&emsp;Transfer&nbsp;Cap<input type="text" id="db5_6_text" class="area2_dropbutton_inputtext" name="">支</div>
+				<div class="area2_dropbutton" id = "db5_7">&emsp;Transfer&nbsp;Post<input type="text" id="db5_7_text" class="area2_dropbutton_inputtext" name="">支</div>
+				<div class="area2_dropbutton" id = "db5_8">&emsp;Abutment<input type="text" id="db5_8_text" class="area2_dropbutton_inputtext" name="">支</div>
+				<div class="area2_dropbutton" id = "db5_9">&emsp;Analog<input type="text" id="db5_9_text" class="area2_dropbutton_inputtext" name="">支</div>
+			</div>
+			<div class="form2_area2"  id="form2_kind6">
+				<div class="area2_dropbutton" id = "db6_1">&emsp;Cement&nbsp;type&nbsp;X<input type="text" id="db6_1_text" class="area2_dropbutton_inputtext" name=""></div>
+				<div class="area2_dropbutton" id = "db6_2">&emsp;Screw&nbsp;type&nbsp;X<input type="text" id="db6_2_text" class="area2_dropbutton_inputtext" name=""></div>
+				<div class="area2_dropbutton" id = "db6_3">&emsp;Screw-Cement&nbsp;type&nbsp;X<input type="text" id="db6_3_text" class="area2_dropbutton_inputtext" name=""></div>
+			</div>
+			<div class="form2_area2"  id="form2_kind7">
+				<div class="area2_dropbutton" id = "db7_1">&emsp;Post&nbsp;印模</div>
+				<div class="area2_dropbutton" id = "db7_2">&emsp;Post&nbsp;樹酯</div>
+				<div class="area2_dropbutton" id = "db7_3">&emsp;材質&nbsp;NPG</div>
+				<div class="area2_dropbutton" id = "db7_4">&emsp;材質&nbsp;NI</div>
+				<div class="area2_dropbutton" id = "db7_5">&emsp;固定臨時假牙</div>
+				<div class="area2_dropbutton" id = "db7_6"><input type="text" id="db7_6_text" class="area2_dropbutton_inputtext" name=""></div>
+			</div>
+			<div id="form2_area3">
+				<div class="area3_put_background">
+					<div class="area3_put_text">金屬瓷牙</div>
+					<div class="area3_put_white">
+						<div class="area3_put_border area3_putable" id="put_area_1">
+							
+						</div>
+					</div>						
+				</div>
+				<div class="area3_put_background">
+					<div class="area3_put_text">金屬冠/嵌體</div>
+					<div class="area3_put_white">
+						<div class="area3_put_border area3_putable" id="put_area_2">
+							
+						</div>
+					</div>						
+				</div>
+				<div class="area3_put_background">
+					<div class="area3_put_text">全瓷冠</div>
+					<div class="area3_put_white">
+						<div class="area3_put_border area3_putable" id="put_area_3">
+							
+						</div>
+					</div>						
+				</div>
+				<div class="area3_put_background">
+					<div class="area3_put_text">牙橋設計</div>
+					<div class="area3_put_white">
+						<div class="area3_put_border area3_putable" id="put_area_4">
+							
+						</div>
+					</div>						
+				</div>
+				<div class="area3_put_background">
+					<div class="area3_put_text">附件</div>
+					<div class="area3_put_white">
+						<div class="area3_put_border area3_putable" id="put_area_5">
+							
+						</div>
+					</div>						
+				</div>
+				<div class="area3_put_background">
+					<div class="area3_put_text">植牙</div>
+					<div class="area3_put_white">
+						<div class="area3_put_border area3_putable" id="put_area_6">
+							
+						</div>
+					</div>						
+				</div>
+				<div class="area3_put_background">
+					<div class="area3_put_text">其他</div>
+					<div class="area3_put_white">
+						<div class="area3_put_border area3_putable" id="put_area_7">
+							
+						</div>
+					</div>						
+				</div>
+				<div class="area3_put_background">
+					<div class="area3_put_text">附加檔案</div>
+					<form action="server/api/items" name="form_example" id="form_example" enctype="multipart/form-data" method="POST">
+						<div class="area3_put_white">
+							<div class="area3_put_border" id="put_area_8">
+								<div class="filediv">
+									<div class="file_text" id="file_text_1">比色前圖片</div>
+									<div id="file_input1" class="file_input" name="book_file_front" ></div>
+
+								</div>
+								<div class="filediv">
+									<div class="file_text" id="file_text_2">比色後圖片</div>
+									<div id="file_input2" class="file_input" name="book_file_end" /></div>
+								</div>
+								<div class="filediv">
+									<div class="file_text" id="file_text_3">其他</div>
+									<div id="file_input3" class="file_input" name="book_file_other" /></div>
+								</div>
+							</div>
+						</div>
+					</form>						
+				</div>
+				<div class="area3_put_background">
+					<div class="area3_put_text">齒位</div>
+					<div class="area3_put_white">
+						<div class="area3_put_border" id="put_area_9">
+							<div class="tooth_position_area" id="tooth_position_area">
+								<label type="button" class="tooth_position_fake tooth_position_fake_up tp_lefttop8_up" id="tp_lefttop8" for="cb_tp_lefttop8"></label>
+								<label class="tooth_position_fake tooth_position_fake_up tp_lefttop7_up" id="tp_lefttop7" for="cb_tp_lefttop7"></label>
+								<label class="tooth_position_fake tooth_position_fake_up tp_lefttop6_up" id="tp_lefttop6" for="cb_tp_lefttop6"></label>
+								<label class="tooth_position_fake tooth_position_fake_up tp_lefttop5_up" id="tp_lefttop5" for="cb_tp_lefttop5"></label>
+								<label class="tooth_position_fake tooth_position_fake_up tp_lefttop4_up" id="tp_lefttop4" for="cb_tp_lefttop4"></label>
+								<label class="tooth_position_fake tooth_position_fake_up tp_lefttop3_up" id="tp_lefttop3" for="cb_tp_lefttop3"></label>
+								<label class="tooth_position_fake tooth_position_fake_up tp_lefttop2_up" id="tp_lefttop2" for="cb_tp_lefttop2"></label>
+								<label class="tooth_position_fake tooth_position_fake_up tp_lefttop1_up" id="tp_lefttop1" for="cb_tp_lefttop1"></label>
+								<label class="tooth_position_fake tooth_position_fake_up tp_righttop1_up" id="tp_righttop1" for="cb_tp_righttop1"></label>
+								<label class="tooth_position_fake tooth_position_fake_up tp_righttop2_up" id="tp_righttop2" for="cb_tp_righttop2"></label>
+								<label class="tooth_position_fake tooth_position_fake_up tp_righttop3_up" id="tp_righttop3" for="cb_tp_righttop3"></label>
+								<label class="tooth_position_fake tooth_position_fake_up tp_righttop4_up" id="tp_righttop4" for="cb_tp_righttop4"></label>
+								<label class="tooth_position_fake tooth_position_fake_up tp_righttop5_up" id="tp_righttop5" for="cb_tp_righttop5"></label>
+								<label class="tooth_position_fake tooth_position_fake_up tp_righttop6_up" id="tp_righttop6" for="cb_tp_righttop6"></label>
+								<label class="tooth_position_fake tooth_position_fake_up tp_righttop7_up" id="tp_righttop7" for="cb_tp_righttop7"></label>
+								<label class="tooth_position_fake tooth_position_fake_up tp_righttop8_up" id="tp_righttop8" for="cb_tp_righttop8"></label>
+								<label class="tooth_position_fake tooth_position_fake_up tp_leftbottom8_up" id="tp_leftbottom8" for="cb_tp_leftbottom8"></label>
+								<label class="tooth_position_fake tooth_position_fake_up tp_leftbottom7_up" id="tp_leftbottom7" for="cb_tp_leftbottom7"></label>
+								<label class="tooth_position_fake tooth_position_fake_up tp_leftbottom6_up" id="tp_leftbottom6" for="cb_tp_leftbottom6"></label>
+								<label class="tooth_position_fake tooth_position_fake_up tp_leftbottom5_up" id="tp_leftbottom5" for="cb_tp_leftbottom5"></label>
+								<label class="tooth_position_fake tooth_position_fake_up tp_leftbottom4_up" id="tp_leftbottom4" for="cb_tp_leftbottom4"></label>
+								<label class="tooth_position_fake tooth_position_fake_up tp_leftbottom3_up" id="tp_leftbottom3" for="cb_tp_leftbottom3"></label>
+								<label class="tooth_position_fake tooth_position_fake_up tp_leftbottom2_up" id="tp_leftbottom2" for="cb_tp_leftbottom2"></label>
+								<label class="tooth_position_fake tooth_position_fake_up tp_leftbottom1_up" id="tp_leftbottom1" for="cb_tp_leftbottom1"></label>
+								<label class="tooth_position_fake tooth_position_fake_up tp_rightbottom1_up" id="tp_rightbottom1" for="cb_tp_rightbottom1"></label>
+								<label class="tooth_position_fake tooth_position_fake_up tp_rightbottom2_up" id="tp_rightbottom2" for="cb_tp_rightbottom2"></label>
+								<label class="tooth_position_fake tooth_position_fake_up tp_rightbottom3_up" id="tp_rightbottom3" for="cb_tp_rightbottom3"></label>
+								<label class="tooth_position_fake tooth_position_fake_up tp_rightbottom4_up" id="tp_rightbottom4" for="cb_tp_rightbottom4"></label>
+								<label class="tooth_position_fake tooth_position_fake_up tp_rightbottom5_up" id="tp_rightbottom5" for="cb_tp_rightbottom5"></label>
+								<label class="tooth_position_fake tooth_position_fake_up tp_rightbottom6_up" id="tp_rightbottom6" for="cb_tp_rightbottom6"></label>
+								<label class="tooth_position_fake tooth_position_fake_up tp_rightbottom7_up" id="tp_rightbottom7" for="cb_tp_rightbottom7"></label>
+								<label class="tooth_position_fake tooth_position_fake_up tp_rightbottom8_up" id="tp_rightbottom8" for="cb_tp_rightbottom8"></label>
+							</div>
+							<div id="tooth_position_count_div">共<input id="tooth_position_count" type="text" name="tooth_position_count" readonly="readonly">顆</div>
+							<div id="now_tooth"></div>
+						</div>
+					</div>						
+				</div>
+				<div class="area3_put_background">
+					<div class="area3_put_text">備註</div>
+					<div class="area3_put_white">
+						<div class="area3_put_border" id="put_area_10">
+							<textarea id="textarea" name="textarea" readonly="readonly"></textarea>
+						</div>
+					</div>						
+				</div>
+			</div>
+		</div>
+		<div id="buttondiv">
+			<input class="controlbutton" id="senddata" type="submit" value="寄送" onclick="save()">
+			<input class="controlbutton" type="submit" value="儲存" onclick="save()">
+			<input class="controlbutton" type="reset" value="取消" onclick="reload()">
+			<input type="button" class="controlbutton" value="test" onclick="test()">	
+		</div>
+		<!-- 隱藏的checkbox -->
+		<div class="tooth_position_hidden">
+			<input type="checkbox" id="cb_tp_lefttop8" name="cb_tp_lefttop8">
+			<input type="checkbox" id="cb_tp_lefttop7" name="cb_tp_lefttop7">
+			<input type="checkbox" id="cb_tp_lefttop6" name="cb_tp_lefttop6">
+			<input type="checkbox" id="cb_tp_lefttop5" name="cb_tp_lefttop5">
+			<input type="checkbox" id="cb_tp_lefttop4" name="cb_tp_lefttop4">
+			<input type="checkbox" id="cb_tp_lefttop3" name="cb_tp_lefttop3">
+			<input type="checkbox" id="cb_tp_lefttop2" name="cb_tp_lefttop2">
+			<input type="checkbox" id="cb_tp_lefttop1" name="cb_tp_lefttop1">
+			<input type="checkbox" id="cb_tp_righttop1" name="cb_tp_righttop1">
+			<input type="checkbox" id="cb_tp_righttop2" name="cb_tp_righttop2">
+			<input type="checkbox" id="cb_tp_righttop3" name="cb_tp_righttop3">
+			<input type="checkbox" id="cb_tp_righttop4" name="cb_tp_righttop4">
+			<input type="checkbox" id="cb_tp_righttop5" name="cb_tp_righttop5">
+			<input type="checkbox" id="cb_tp_righttop6" name="cb_tp_righttop6">
+			<input type="checkbox" id="cb_tp_righttop7" name="cb_tp_righttop7">
+			<input type="checkbox" id="cb_tp_righttop8" name="cb_tp_righttop8">
+			<input type="checkbox" id="cb_tp_leftbottom8" name="cb_tp_leftbottom8">
+			<input type="checkbox" id="cb_tp_leftbottom7" name="cb_tp_leftbottom7">
+			<input type="checkbox" id="cb_tp_leftbottom6" name="cb_tp_leftbottom6">
+			<input type="checkbox" id="cb_tp_leftbottom5" name="cb_tp_leftbottom5">
+			<input type="checkbox" id="cb_tp_leftbottom4" name="cb_tp_leftbottom4">
+			<input type="checkbox" id="cb_tp_leftbottom3" name="cb_tp_leftbottom3">
+			<input type="checkbox" id="cb_tp_leftbottom2" name="cb_tp_leftbottom2">
+			<input type="checkbox" id="cb_tp_leftbottom1" name="cb_tp_leftbottom1">
+			<input type="checkbox" id="cb_tp_rightbottom1" name="cb_tp_rightbottom1">
+			<input type="checkbox" id="cb_tp_rightbottom2" name="cb_tp_rightbottom2">
+			<input type="checkbox" id="cb_tp_rightbottom3" name="cb_tp_rightbottom3">
+			<input type="checkbox" id="cb_tp_rightbottom4" name="cb_tp_rightbottom4">
+			<input type="checkbox" id="cb_tp_rightbottom5" name="cb_tp_rightbottom5">
+			<input type="checkbox" id="cb_tp_rightbottom6" name="cb_tp_rightbottom6">
+			<input type="checkbox" id="cb_tp_rightbottom7" name="cb_tp_rightbottom7">
+			<input type="checkbox" id="cb_tp_rightbottom8" name="cb_tp_rightbottom8">
+			<textarea id="file1_64"></textarea>
+			<textarea id="file2_64"></textarea>
+			<textarea id="file3_64"></textarea>
+		</div>		
+	</div>	
+</div>
+<div id="block_background"></div>
+<div id="chatbox">
+	<div id="chat_topbar">
+		<div id="chat_title">溝通單</div>
+		<div id="chat_close"></div>
+	</div>	
+	<div id="chat_content">
+		<div id="chat_history">
+			<div class="chat_message">
+				<div id="chat_img"></div>
+			</div>
+		</div>
+		<div id="chat_post">
+			<textarea id="chat_send">輸入訊息</textarea>
+			<div id="voice_button"></div>
+			<div id="chat_send_button"></div>
+		</div>
+	</div>
+</div>
+
+ <!-- js -->
+  <script  src="resources/js/book.js"></script>
+
+</body>
+</html>
